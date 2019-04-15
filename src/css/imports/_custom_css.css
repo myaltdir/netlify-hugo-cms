@@ -8,6 +8,10 @@ a {
     border-bottom: 1px solid #FF3E59;
 }
 
+.card {
+    min-width: 100%;
+}
+
 a.card {
     color: inherit;
 }
