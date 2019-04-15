@@ -1,6 +1,6 @@
 ---
 title: Nuevo post
-date: '15/04/19 - 9:41 PM'
+date: 2019-04-08T22:00:00.000Z
 author: yatusabeh
 description: Texto de prueba
 image: /img/about-jumbotron.jpg
