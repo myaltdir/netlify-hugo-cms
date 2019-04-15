@@ -14,7 +14,7 @@ collections: # A list of collections the CMS should be able to edit
     slug: "{{slug}}"
     fields: # The fields each document in this collection have
       - {label: "Título", name: "title", widget: "string"}
-      - {label: "Fecha publicación", name: "date", widget: "datetime", format: "DD/MM/YY - LT"}
+      - {label: "Fecha publicación", name: "date", widget: "datetime"}
       - {label: "Autor", name: "author", widget: "string"}
       - {label: "Introducción", name: "description", widget: "text", required: true}
       - {label: "Imagen portada", name: "image", widget: "image", required: false}
