@@ -20,7 +20,14 @@ class ColorControl extends React.Component {
   }
 }
 
+if (CMS == undefined) {
+  console.log("Hola2");
+  console.log(CMS);
+}
 CMS.registerPreviewStyle("/css/main.css");
+if (CMS === undefined) {
+  console.log("Hola");
+}
 CMS.registerPreviewTemplate("home", HomePreview);
 CMS.registerPreviewTemplate("post", PostPreview);
 CMS.registerPreviewTemplate("products", ProductsPreview);

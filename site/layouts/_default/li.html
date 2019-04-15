@@ -1,6 +1,29 @@
-<a href="{{ .Permalink }}" class="no-underline pa3 bg-grey-1 br1 mb2 db raise w-100">
+<!-- <a href="{{ .Permalink }}" class="no-underline pa3 bg-grey-1 br1 mb2 db raise w-100">
 	<h2 class="f3 b lh-title mb1 primary">{{ .Title }}</h2>
 	<p class="mid-gray lh-title mb2">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
 	<p class="mb0">{{ .Description }}</p>
 	<p class="link b dib black mb0">Read more →</p>
+</a>
+ -->
+<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+href="{{ .Permalink }}" class="card blog-card" rel="bookmark" >
+{{ if isset .Params "image" -}}
+<div class="card-img-container">
+	<picture>
+	{{ if (fileExists (printf "%s/%s" "static" (replace (.Params.featureimage) (path.Ext .Params.featureimage) ".webp"))) -}}
+		<source srcset="{{ replace (.Params.image) (path.Ext (.Params.image)) ".webp" | absURL }}" type="image/webp">
+	{{- end }}
+	<source srcset="{{ .Params.image | absURL }}">
+	<img src="{{.Params.image | absURL }}" class="card-img" {{ if isset .Params "featuredimagedescription" }}alt="{{.Params.featuredimagedescription}}"{{end}}>
+	</picture>
+</div>
+{{- end }}
+<article class="card-body">
+<h2 class="card-title">{{ .Title }}</h2>
+<p class="card-text">{{ if (isset .Params "description") }}{{ index .Params "description" }}{{ else }}{{ .Summary }}{{ end }}</p>
+<div class="card-subtext muted-text">
+	<p> <time datetime="{{ .Date.Format "2006-01-02" }}">{{.Date.Day}} {{ index $.Site.Data.meses (printf "%d" .Date.Month) }}, {{.Date.Year}}</time></p>
+	{{ if (isset .Params "categories") }}<p>{{ range .Params.categories }}#{{ . }} {{ end }}</p>{{ end }}
+</div>
+</article>
 </a>
