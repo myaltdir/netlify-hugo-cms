@@ -1,20 +1,12 @@
 {{ partial "home-header"}}
-<div class="pv2">
-	<div class="ph3 mw7 center">
-
-		<h2 class="f3 b lh-title mb1 mt2">Historias recientes</h1>
-
-		<div class="w-100 flex-ns mhn1-ns flex-wrap mb3">
-			{{ range first 4 (where .Data.Pages "Type" "post") }}
-				<div class="ph1-ns flex">
-					{{ .Render "li" }}
-				</div>
-			{{ end }}
-		</div>
-
-		<div class="tc">
-			<a href="/post" class="btn-ver-mas raise">Ver más</a>
-		</div>
-
+<div class="container">
+	<h2 class="titulo-seccion mb-2">Historias recientes</h1>
+	{{ range first 4 (where .Data.Pages "Type" "post") }}
+	<!-- <div class="ph1-ns flex w-100 hola"> -->
+		{{ .Render "li" }}
+	<!-- </div> -->
+	{{ end }}
+	<div class="text-center">
+		<a href="/post" class="btn-ver-mas btn btn-outline-primary raise">Ver más</a>
 	</div>
 </div>

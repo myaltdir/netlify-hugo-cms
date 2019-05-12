@@ -5,25 +5,30 @@
 	<p class="link b dib black mb0">Read more →</p>
 </a>
  -->
-<a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
-href="{{ .Permalink }}" class="card blog-card" rel="bookmark" >
-{{ if isset .Params "image" -}}
-<div class="card-img-container">
-	<picture>
-	{{ if (fileExists (printf "%s/%s" "static" (replace (.Params.featureimage) (path.Ext .Params.featureimage) ".webp"))) -}}
-		<source srcset="{{ replace (.Params.image) (path.Ext (.Params.image)) ".webp" | absURL }}" type="image/webp">
-	{{- end }}
-	<source srcset="{{ .Params.image | absURL }}">
-	<img src="{{.Params.image | absURL }}" class="card-img" {{ if isset .Params "featuredimagedescription" }}alt="{{.Params.featuredimagedescription}}"{{end}}>
-	</picture>
+<div class="card mb-4">
+	<a class="row" href="{{ .Permalink }}" rel="bookmark" ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" >
+		
+		{{ if isset .Params "image" -}}
+		<!-- <div class="card-img-container col-md-4"> -->
+			<!-- <picture>
+			{{ if (fileExists (printf "%s/%s" "static" (replace (.Params.featureimage) (path.Ext .Params.featureimage) ".webp"))) -}}
+				<source srcset="{{ replace (.Params.image) (path.Ext (.Params.image)) ".webp" | absURL }}" type="image/webp">
+			{{- end }}
+			<source srcset="{{ .Params.image | absURL }}"> -->
+			<!-- <img class="col-md-4 card-img" src="{{.Params.image | absURL }}" {{ if isset .Params "featuredimagedescription" }}alt="{{.Params.featuredimagedescription}}"{{end}}> -->
+			<div class="li-img col-md-4 card-img" style="background-image: url('{{.Params.image | absURL }}')">
+				<!-- Aquí va la imagen como fondo-->
+			</div>
+			<!-- </picture> -->
+		<!-- </div> -->
+		{{- end }}
+		<article class="card-body col-md-8">
+		<h2 class="card-title h3"><strong>{{ .Title }}</strong></h2>
+		<p class="card-text">{{ if (isset .Params "description") }}{{ index .Params "description" }}{{ else }}{{ .Summary }}{{ end }}</p>
+		<div class="card-subtext muted-text">
+			<p class="text-muted"> <time datetime="{{ .Date.Format "2006-01-02" }}">{{.Date.Day}} {{ index $.Site.Data.meses (printf "%d" .Date.Month) }}, {{.Date.Year}}</time></p>
+			<!-- {{ if (isset .Params "categories") }}<p>{{ range .Params.categories }}#{{ . }} {{ end }}</p>{{ end }} -->
+		</div>
+		</article>
+	</a>
 </div>
-{{- end }}
-<article class="card-body">
-<h2 class="card-title">{{ .Title }}</h2>
-<p class="card-text">{{ if (isset .Params "description") }}{{ index .Params "description" }}{{ else }}{{ .Summary }}{{ end }}</p>
-<div class="card-subtext muted-text">
-	<p> <time datetime="{{ .Date.Format "2006-01-02" }}">{{.Date.Day}} {{ index $.Site.Data.meses (printf "%d" .Date.Month) }}, {{.Date.Year}}</time></p>
-	{{ if (isset .Params "categories") }}<p>{{ range .Params.categories }}#{{ . }} {{ end }}</p>{{ end }}
-</div>
-</article>
-</a>
