@@ -2,13 +2,13 @@
  
 <nav class="paginacion row">
     {{ if .Paginator.HasNext }}
-    <a class="col-sm-3" title="Página anterior" href="{{ .Paginator.Next.URL }}">
+    <a id="boton-anterior" class="col-sm-3" title="Página anterior" href="{{ .Paginator.Next.URL }}">
         &larr; Anterior
     </a>
     {{ end }}
     <div class="col"><!-- Separador en blanco --></div>
     {{ if .Paginator.HasPrev }}
-    <a class="col-sm-3" title="Página siguiente" href="{{ .Paginator.Prev.URL }}">
+    <a id="boton-siguiente" class="col-sm-3" title="Página siguiente" href="{{ .Paginator.Prev.URL }}">
         Siguiente &rarr;
     </a>
     {{ end }}
