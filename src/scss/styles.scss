@@ -138,13 +138,15 @@ header {
 }
 
 #img-highlight {
+    display: block;
     margin-top: 0rem;
     margin-bottom: 2rem;
-    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 60%;
 
-    @include media-breakpoint-down(md) {
-        width: 100%;
+    @include media-breakpoint-down(sm) {
+        max-width: 100% !important;
     }
 }
 
@@ -164,6 +166,12 @@ header {
     color: #FF3E59;
     text-decoration: none;
     border-bottom: 2px solid #FF3E59;
+}
+
+.contenido-post {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
 }
 
 /* Pie de página: Contacto */
